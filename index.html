@@ -186,9 +186,9 @@ Following Background and Data are taken from project assignment page.</p>
 
 <h2>Work</h2>
 
-<h4>load data and library</h4>
+<h4>Load data and library</h4>
 
-<p>Needed libraries and original data are loaded. Missing values, &quot;#DIV/0!&quot;, &quot;&quot; and &quot;NA&quot; are changed to NA.</p>
+<p>Needed libraries and original data are loaded. Missing values, &quot;#DIV/0!&quot;, &quot;&quot; and &quot;NA&quot; are changed to NA. Converting 'classe' into factor.</p>
 
 <pre><code class="r">library(caret)
 
@@ -305,8 +305,7 @@ trainingOrg$classe &lt;- as.factor(trainingOrg$classe)
 
 <h4>Data cleaning</h4>
 
-<p>Data is cleaned removing NA, near zero variance predictor and columns not useful for classification (like x, user name, time stamps and windows).
-classe is converted into factor.</p>
+<p>Data is cleaned removing NA, near zero variance predictor and columns not useful for classification (like x, user name, time stamps and windows).</p>
 
 <pre><code class="r">NAindex &lt;- apply(trainingOrg,2,function(x) {sum(is.na(x))}) 
 trainingNNA &lt;- trainingOrg[,which(NAindex == 0)]
@@ -330,7 +329,7 @@ trainingFIN &lt;- trainingNZV[,7:dimTrain[2]]
 testingFIN &lt;- testingNZV[,7:dimTest[2]]
 </code></pre>
 
-<h4>Partitioning the training for cross validation</h4>
+<h4>Partitioning training set for cross validation</h4>
 
 <p>The training set is splitted in two parts, train set (60%) and crossValidation set (40%)</p>
 

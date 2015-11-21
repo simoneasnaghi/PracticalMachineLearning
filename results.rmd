@@ -27,9 +27,9 @@ The data for this project come from this source: [http://groupware.les.inf.puc-r
 
 ## Work
 
-#### load data and library
+#### Load data and library
 
-Needed libraries and original data are loaded. Missing values, "#DIV/0!", "" and "NA" are changed to NA.
+Needed libraries and original data are loaded. Missing values, "#DIV/0!", "" and "NA" are changed to NA.  Converting 'classe' into factor.
 
 ```r
 library(caret)
@@ -148,7 +148,6 @@ str(trainingOrg)
 
 #### Data cleaning
 Data is cleaned removing NA, near zero variance predictor and columns not useful for classification (like x, user name, time stamps and windows).
-classe is converted into factor.
 
 ```r
 NAindex <- apply(trainingOrg,2,function(x) {sum(is.na(x))}) 
@@ -173,7 +172,7 @@ trainingFIN <- trainingNZV[,7:dimTrain[2]]
 testingFIN <- testingNZV[,7:dimTest[2]]
 ``` 
 
-#### Partitioning the training for cross validation
+#### Partitioning training set for cross validation
 The training set is splitted in two parts, train set (60%) and crossValidation set (40%)
 
 ```r
